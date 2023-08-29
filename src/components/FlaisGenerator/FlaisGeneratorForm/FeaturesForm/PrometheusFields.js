@@ -1,30 +1,19 @@
 import React from 'react';
 import {Stack, TextField} from '@mui/material';
 
-const PrometheusFields = ({ form, setForm }) => {
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm((prevForm) => ({
-            ...prevForm,
-            Prometheus: {
-                ...prevForm.Prometheus,
-                [name]: value,
-            },
-        }));
-    };
-
+const PrometheusFields = ({ form, handleChange }) => {
     return (
         <Stack spacing={2}>
             <TextField
                 name="port"
                 label="Port"
-                value={form.Prometheus.port}
+                value={form.prometheus.port}
                 onChange={handleChange}
             />
             <TextField
                 name="path"
                 label="Path"
-                value={form.Prometheus.path}
+                value={form.prometheus.path}
                 onChange={handleChange}
             />
         </Stack>

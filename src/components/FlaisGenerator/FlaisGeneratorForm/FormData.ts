@@ -18,7 +18,7 @@ export interface FormData {
     xmx: string;
     environmentVariables: Record<string, string>;
     secretReferences: Record<string, string>;
-    Prometheus: {
+    prometheus: {
         active: boolean;
         port: string;
         path: string;
@@ -79,7 +79,7 @@ export const initialFormData: FormData = {
     xmx: "358Mi",
     environmentVariables: {},
     secretReferences: {},
-    Prometheus: {
+    prometheus: {
         active: true,
         port: "8080",
         path: "/actuator/prometheus"
