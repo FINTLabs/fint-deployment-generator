@@ -80,9 +80,9 @@ export const initialFormData: FormData = {
     environmentVariables: {},
     secretReferences: {},
     Prometheus: {
-        active: false,
-        port: "",
-        path: ""
+        active: true,
+        port: "8080",
+        path: "/actuator/prometheus"
     },
     onePassword: {
         active: false,

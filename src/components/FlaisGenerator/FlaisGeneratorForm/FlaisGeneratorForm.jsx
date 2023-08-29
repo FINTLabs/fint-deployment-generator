@@ -4,6 +4,7 @@ import {useState} from "react";
 import ResourceForm from "./ResourceForm";
 import BasicInfoForm from "./BasicInfoForm";
 import DynamicKeyValForm from "./DynamicKeyValForm";
+import FeaturesForm from "./FeaturesForm";
 
 const FlaisGeneratorForm = () => {
     const [form, setForm] = useState(initialFormData);
@@ -24,10 +25,11 @@ const FlaisGeneratorForm = () => {
     return (
         <form noValidate>
             <Stack spacing={2} width={300}>
-                {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange}/>)}
-                {renderSection("Resources", <ResourceForm form={form} setForm={setForm}/>)}
+                {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange} />)}
+                {renderSection("Resources", <ResourceForm form={form} setForm={setForm} />)}
                 {renderSection("Environment Variables", <DynamicKeyValForm form={form} setForm={setForm} fieldKey="environmentVariables" />)}
                 {renderSection("Secret References", <DynamicKeyValForm form={form} setForm={setForm} fieldKey="secretReferences" />)}
+                {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm} />)}
             </Stack>
         </form>
     );
