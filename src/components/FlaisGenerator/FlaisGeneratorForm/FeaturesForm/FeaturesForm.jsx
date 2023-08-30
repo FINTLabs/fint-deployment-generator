@@ -4,6 +4,7 @@ import PrometheusFields from './PrometheusFields';
 import OnePasswordFields from "./OnePasswordFields";
 import DatabaseFields from "./DatabaseFields";
 import UrlFields from "./UrlFields";
+import KafkaFields from "./KafkaFields";
 
 const FeaturesForm = ({form, setForm, handleChange}) => {
 
@@ -54,6 +55,15 @@ const FeaturesForm = ({form, setForm, handleChange}) => {
             >
                 <UrlFields form={form} handleChange={handleChange}/>
             </ToggleFieldGroup>
+
+            <ToggleFieldGroup
+                label="kafka"
+                isActive={form.kafka.active}
+                onToggle={() => handleToggle('kafka')}
+            >
+                <KafkaFields form={form} handleChange={handleChange}/>
+            </ToggleFieldGroup>
+
         </>
     );
 };
