@@ -29,10 +29,10 @@ export interface FormData {
     };
     kafka: {
         active: boolean;
-        acls: {
+        acl: {
             topic: string;
             permission: string;
-        }[];
+        };
     };
     database: {
         active: boolean;
@@ -90,12 +90,11 @@ export const initialFormData: FormData = {
     },
     kafka: {
         active: false,
-        acls: [
+        acl:
             {
                 topic: "",
-                permission: ""
+                permission: "read"
             }
-        ]
     },
     database: {
         active: false,

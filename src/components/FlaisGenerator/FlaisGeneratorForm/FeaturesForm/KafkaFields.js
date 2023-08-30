@@ -1,27 +1,17 @@
 import React, {useState} from 'react';
 import {InputLabel, MenuItem, Select, Stack, TextField, FormControl} from '@mui/material';
 
-const UrlFields = ({ form, handleChange }) => {
+const KafkaFields = ({ form, handleChange }) => {
 
-    const [values, setValues] = useState([]);
-
-    const handleChangeHold = (e, index, field) => {
-        //const newValue = [...values];
-        // newPairs[index][field] = e.target.value;
-        // setKeyValPairs(newPairs);
-        //
-        // const newPairObj = {};
-        // newPairs.forEach(pair => {
-        //     if (pair.key && pair.value) {
-        //         newPairObj[pair.key] = pair.value;
-        //     }
-        // });
-
-        //setForm(prevForm => ({ ...prevForm, newValue}));
-    };
 
     return (
         <Stack spacing={2}>
+            <TextField
+                name="kafkatopic"
+                label="Topic"
+                value={form.kafka.acl.topic}
+                onChange={handleChange}
+            />
             <FormControl>
                 <InputLabel id="kafkapermission-select-label">Permission</InputLabel>
 
@@ -29,21 +19,14 @@ const UrlFields = ({ form, handleChange }) => {
                     labelId={"kafkapermission-select-label"}
                     name="kafkapermission"
                     label="Permission"
-                    value={"Read"}
+                    value={form.kafka.acl.permission}
                 >
-                    <MenuItem value={"Admin"}>Admin</MenuItem>
-                    <MenuItem value={"Read"}>Read</MenuItem>
+                    <MenuItem value={"admin"}>admin</MenuItem>
+                    <MenuItem value={"read"}>read</MenuItem>
                 </Select>
             </FormControl>
-            <TextField
-                name="kafkatopic"
-                label="Topic"
-                value={form.kafka.acls}
-                onChange={handleChange}
-            />
-
         </Stack>
     );
 };
 
-export default UrlFields;
+export default KafkaFields;
