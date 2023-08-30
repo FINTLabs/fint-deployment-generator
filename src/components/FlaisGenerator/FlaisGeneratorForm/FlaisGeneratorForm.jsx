@@ -1,19 +1,43 @@
 import {initialFormData} from "./FormData.ts";
-import {Divider, Paper, Stack, Typography} from "@mui/material";
+import {
+    Divider,
+    Paper,
+    Stack,
+    Typography,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    Button
+} from "@mui/material";
 import {useState} from "react";
 import ResourceForm from "./ResourceForm";
 import BasicInfoForm from "./BasicInfoForm";
 import DynamicKeyValForm from "./DynamicKeyValForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretsForm from "./SecretsForm";
+import JsonDisplay from "./JsonDisplay";
 
 
 const FlaisGeneratorForm = () => {
     const [form, setForm] = useState(initialFormData);
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const handleChange = (event) => {
         const {name, value} = event.target;
         setForm(prevForm => ({...prevForm, [name]: value}));
+    };
+
+    const showJsonData = () => {
+        alert(JSON.stringify(form, null, 2));
     };
 
     const renderSection = (title, component) => (
@@ -26,21 +50,28 @@ const FlaisGeneratorForm = () => {
 
     return (
         <div>
-        <form noValidate>
-            <Stack spacing={2} width={300}>
-                {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange} />)}
-                {renderSection("Resources", <ResourceForm form={form} setForm={setForm} />)}
-                {renderSection("Environment Variables", <DynamicKeyValForm form={form} setForm={setForm} fieldKey="environmentVariables" />)}
-                {renderSection("Secret References", <SecretsForm form={form} setForm={setForm} fieldKey="secretReferences" />)}
-                {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm} handleChange={handleChange} />)}
-            </Stack>
-        </form>
+            <form noValidate>
+                <Stack spacing={2} width={300}>
+                    {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange}/>)}
+                    {renderSection("Resources", <ResourceForm form={form} setForm={setForm}/>)}
+                    {renderSection("Environment Variables", <DynamicKeyValForm form={form} setForm={setForm} fieldKey="environmentVariables"/>)}
+                    {renderSection("Secret References", <SecretsForm form={form} setForm={setForm} fieldKey="secretReferences"/>)}
+                    {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm} handleChange={handleChange}/>)}
+                </Stack>
+            </form>
 
-            <div>
-                <p>Value: {form.name}</p>
-            </div>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={handleClickOpen}
+                style={{margin: '1rem 0'}}
+            >
+                Show JSON
+            </Button>
 
-</div>
+            <JsonDisplay open={open} handleClose={handleClose} jsonData={form}/>
+
+        </div>
     );
 };
 
