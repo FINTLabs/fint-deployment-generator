@@ -4,7 +4,6 @@ export interface FormData {
     partOf: string;
     team: string;
     port: string;
-    image: string;
     resources: {
         limits: {
             memory: string;
@@ -15,7 +14,6 @@ export interface FormData {
             cpu: string;
         };
     };
-    xmx: string;
     environmentVariables: Record<string, string>;
     secretReferences: Record<string, string>;
     prometheus: {
@@ -48,15 +46,6 @@ export interface FormData {
         basePath: string;
         middleware: string;
     };
-    restartPolicy: string;
-    replicas: number;
-    strategy: {
-        type: string;
-        rollingUpdate: {
-            maxSurge: number;
-            maxUnavailable: number;
-        };
-    };
 }
 
 export const initialFormData: FormData = {
@@ -65,7 +54,6 @@ export const initialFormData: FormData = {
     partOf: "fint-core",
     team: "core",
     port: "8080",
-    image: "",
     resources: {
         limits: {
             memory: "512Mi",
@@ -76,7 +64,6 @@ export const initialFormData: FormData = {
             cpu: "250m"
         }
     },
-    xmx: "358Mi",
     environmentVariables: {},
     secretReferences: {},
     prometheus: {
@@ -110,13 +97,4 @@ export const initialFormData: FormData = {
         basePath: "",
         middleware: ""
     },
-    restartPolicy: "always",
-    replicas: 1,
-    strategy: {
-        type: "RollingUpdate",
-        rollingUpdate: {
-            maxSurge: 1,
-            maxUnavailable: 0
-        }
-    }
 }
