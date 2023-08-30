@@ -7,7 +7,7 @@ const IngressFields = ({ form, handleChange }) => {
             <TextField
                 name="basepath"
                 label="Basepath"
-                value={form.ingress.basepath}
+                value={form.ingress.basePath}
                 onChange={handleChange}
             />
             <TextField
