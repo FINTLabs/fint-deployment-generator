@@ -19,8 +19,7 @@ export interface FormData {
         value: string
     }[];
     secretReferences: {
-        name: string,
-        value: string
+        name: string
     }[];
     prometheus: {
         active: boolean;
