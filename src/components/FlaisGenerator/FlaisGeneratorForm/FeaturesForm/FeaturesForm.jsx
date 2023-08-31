@@ -10,12 +10,13 @@ import IngressFields from "./Fields/IngressFields";
 
 const FeaturesForm = ({form, setForm}) => {
 
-    const handleChange = (field, property) => (event) => {
+    const handleChange = (field, property) => (event, newValue = null) => {
+        const value = Array.isArray(newValue) ? newValue : (event ? event.target.value : newValue);
         setForm({
             ...form,
             [field]: {
                 ...form[field],
-                [property]: event.target.value,
+                [property]: value,
             },
         });
     };

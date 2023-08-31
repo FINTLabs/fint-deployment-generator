@@ -49,7 +49,7 @@ export interface FormData {
     ingress: {
         active: boolean;
         basePath: string;
-        middlewares: [string];
+        middlewares: string[];
     };
 }
 
@@ -96,6 +96,6 @@ export const initialFormData: FormData = {
     ingress: {
         active: false,
         basePath: "",
-        middlewares: [""]
+        middlewares: []
     },
 }
