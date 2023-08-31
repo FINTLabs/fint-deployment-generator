@@ -17,6 +17,25 @@ export function updateFlaisApplication(formData) {
     flaisApplication.spec.resources.requests.memory = formData.resources.requests.memory;
     flaisApplication.spec.resources.requests.cpu = formData.resources.requests.cpu;
 
+    if (formData.environmentVariables.length > 0) {
+        flaisApplication.spec.env = formData.environmentVariables.map((envVar) => ({
+            name: envVar.name,
+            value: envVar.value
+        }));
+    } else {
+        delete flaisApplication.spec.env;
+    }
+
+    if (formData.secretReferences.length > 0) {
+        flaisApplication.spec.envFrom = formData.secretReferences.map((secretRef) => ({
+            secretRef: {
+                name: secretRef.name
+            }
+        }));
+    } else {
+        delete flaisApplication.spec.envFrom;
+    }
+
     if (formData.prometheus.active) {
         flaisApplication.spec.prometheus.enabled = true;
         flaisApplication.spec.prometheus.port = formData.prometheus.port;

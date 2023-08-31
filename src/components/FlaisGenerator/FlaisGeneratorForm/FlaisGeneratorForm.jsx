@@ -9,7 +9,7 @@ import {
 import {useState} from "react";
 import ResourceForm from "./Forms/ResourceForm";
 import BasicInfoForm from "./Forms/BasicInfoForm";
-import DynamicKeyValForm from "./Forms/DynamicKeyValForm";
+import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretsForm from "./Forms/SecretsForm";
 import DisplayFlaisApplication from "./DisplayFlaisApplication";
@@ -46,7 +46,7 @@ const FlaisGeneratorForm = () => {
                 <Stack spacing={2} width={300}>
                     {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange}/>)}
                     {renderSection("Resources", <ResourceForm form={form} setForm={setForm}/>)}
-                    {renderSection("Environment Variables", <DynamicKeyValForm form={form} setForm={setForm} fieldKey="environmentVariables"/>)}
+                    {renderSection("Environment Variables", <EnvironmentVariablesForm form={form} setForm={setForm}/>)}
                     {renderSection("Secret References", <SecretsForm form={form} setForm={setForm} fieldKey="secretReferences"/>)}
                     {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm} handleChange={handleChange}/>)}
                 </Stack>

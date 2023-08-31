@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, IconButton, Stack } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const DynamicKeyValForm = ({ form, setForm, fieldKey }) => {
-    const [keyValPairs, setKeyValPairs] = useState([{ key: '', value: '' }]);
+const EnvironmentVariablesForm = ({ form, setForm }) => {
+    const [keyValPairs, setKeyValPairs] = useState(form.environmentVariables || []);
+
+    useEffect(() => {
+        setForm(prevForm => ({ ...prevForm, environmentVariables: keyValPairs }));
+    }, [keyValPairs, setForm]);
 
     const addPair = () => {
-        setKeyValPairs([...keyValPairs, { key: '', value: '' }]);
+        setKeyValPairs([...keyValPairs, { name: '', value: '' }]);
     };
 
     const removePair = (index) => {
@@ -19,15 +23,6 @@ const DynamicKeyValForm = ({ form, setForm, fieldKey }) => {
         const newPairs = [...keyValPairs];
         newPairs[index][field] = e.target.value;
         setKeyValPairs(newPairs);
-
-        const newPairObj = {};
-        newPairs.forEach(pair => {
-            if (pair.key && pair.value) {
-                newPairObj[pair.key] = pair.value;
-            }
-        });
-
-        setForm(prevForm => ({ ...prevForm, [fieldKey]: newPairObj }));
     };
 
     return (
@@ -35,9 +30,9 @@ const DynamicKeyValForm = ({ form, setForm, fieldKey }) => {
             {keyValPairs.map((pair, index) => (
                 <Stack direction="row" spacing={1} key={index}>
                     <TextField
-                        label="Key"
-                        value={pair.key}
-                        onChange={(e) => handleChange(e, index, 'key')}
+                        label="Name"
+                        value={pair.name}
+                        onChange={(e) => handleChange(e, index, 'name')}
                     />
                     <TextField
                         label="Value"
@@ -56,4 +51,4 @@ const DynamicKeyValForm = ({ form, setForm, fieldKey }) => {
     );
 };
 
-export default DynamicKeyValForm;
+export default EnvironmentVariablesForm;
