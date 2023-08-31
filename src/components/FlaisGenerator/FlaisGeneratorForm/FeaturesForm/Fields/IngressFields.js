@@ -8,13 +8,13 @@ const IngressFields = ({ form, handleChange }) => {
                 name="basepath"
                 label="Basepath"
                 value={form.ingress.basePath}
-                onChange={handleChange}
+                onChange={handleChange('ingress', 'basePath')}
             />
             <TextField
                 name="middleware"
                 label="Middleware"
                 value={form.ingress.middleware}
-                onChange={handleChange}
+                onChange={handleChange('ingress', 'middleware')}
             />
         </Stack>
     );

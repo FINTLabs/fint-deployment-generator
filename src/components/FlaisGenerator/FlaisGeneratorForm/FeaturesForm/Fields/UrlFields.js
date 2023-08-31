@@ -8,13 +8,13 @@ const UrlFields = ({ form, handleChange }) => {
                 name="hostname"
                 label="Hostname"
                 value={form.url.hostname}
-                onChange={handleChange}
+                onChange={handleChange('url', 'hostname')}
             />
             <TextField
                 name="basepath"
                 label="Basepath"
                 value={form.url.basePath}
-                onChange={handleChange}
+                onChange={handleChange('url', 'basePath')}
             />
         </Stack>
     );

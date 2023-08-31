@@ -8,13 +8,13 @@ const PrometheusFields = ({ form, handleChange }) => {
                 name="port"
                 label="Port"
                 value={form.prometheus.port}
-                onChange={handleChange}
+                onChange={handleChange('prometheus', 'port')}
             />
             <TextField
                 name="path"
                 label="Path"
                 value={form.prometheus.path}
-                onChange={handleChange}
+                onChange={handleChange('prometheus', 'path')}
             />
         </Stack>
     );

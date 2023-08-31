@@ -8,7 +8,7 @@ const DatabaseFields = ({ form, handleChange }) => {
                 name="name"
                 label="Name"
                 value={form.database.name}
-                onChange={handleChange}
+                onChange={handleChange('database', 'name')}
             />
         </Stack>
     );

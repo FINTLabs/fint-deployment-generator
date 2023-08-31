@@ -1,13 +1,23 @@
 import React from 'react';
 import ToggleFieldGroup from './ToggleFieldGroup';
-import PrometheusFields from './PrometheusFields';
-import OnePasswordFields from "./OnePasswordFields";
-import DatabaseFields from "./DatabaseFields";
-import UrlFields from "./UrlFields";
-import KafkaFields from "./KafkaFields";
+import PrometheusFields from './Fields/PrometheusFields';
+import OnePasswordFields from "./Fields/OnePasswordFields";
+import DatabaseFields from "./Fields/DatabaseFields";
+import UrlFields from "./Fields/UrlFields";
+import KafkaFields from "./Fields/KafkaFields";
 import {Stack} from "@mui/material";
 
-const FeaturesForm = ({form, setForm, handleChange}) => {
+const FeaturesForm = ({form, setForm}) => {
+
+    const handleChange = (field, property) => (event) => {
+        setForm({
+            ...form,
+            [field]: {
+                ...form[field],
+                [property]: event.target.value,
+            },
+        });
+    };
 
     const handleToggle = (field) => {
         setForm({

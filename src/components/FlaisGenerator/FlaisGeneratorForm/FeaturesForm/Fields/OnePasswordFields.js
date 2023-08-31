@@ -8,7 +8,7 @@ const OnePasswordFields = ({ form, handleChange }) => {
                 name="path"
                 label="Path"
                 value={form.onePassword.path}
-                onChange={handleChange}
+                onChange={handleChange('onePassword', 'path')}
             />
         </Stack>
     );
