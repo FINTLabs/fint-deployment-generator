@@ -7,7 +7,7 @@ const KafkaFields = ({ form, handleChange }) => {
             <TextField
                 name="kafkatopic"
                 label="Topic"
-                value={form.kafka.acl.topic}
+                value={form.kafka.acls.topic}
                 onChange={handleChange}
             />
             <FormControl>
@@ -17,7 +17,7 @@ const KafkaFields = ({ form, handleChange }) => {
                     labelId={"kafkapermission-select-label"}
                     name="kafkapermission"
                     label="Permission"
-                    value={form.kafka.acl.permission}
+                    value={form.kafka.acls.permission}
                 >
                     <MenuItem value={"admin"}>admin</MenuItem>
                     <MenuItem value={"read"}>read</MenuItem>

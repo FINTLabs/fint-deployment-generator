@@ -14,8 +14,14 @@ export interface FormData {
             cpu: string;
         };
     };
-    environmentVariables: Record<string, string>;
-    secretReferences: Record<string, string>;
+    environmentVariables: {
+        name: string,
+        value: string
+    }[];
+    secretReferences: {
+        name: string,
+        value: string
+    }[];
     prometheus: {
         active: boolean;
         port: string;
@@ -27,10 +33,10 @@ export interface FormData {
     };
     kafka: {
         active: boolean;
-        acl: {
+        acls: {
             topic: string;
             permission: string;
-        };
+        }[];
     };
     database: {
         active: boolean;
@@ -64,8 +70,8 @@ export const initialFormData: FormData = {
             cpu: "250m"
         }
     },
-    environmentVariables: {},
-    secretReferences: {},
+    environmentVariables: [],
+    secretReferences: [],
     prometheus: {
         active: true,
         port: "8080",
@@ -77,11 +83,7 @@ export const initialFormData: FormData = {
     },
     kafka: {
         active: false,
-        acl:
-            {
-                topic: "",
-                permission: "read"
-            }
+        acls: []
     },
     database: {
         active: false,

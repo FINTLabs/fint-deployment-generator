@@ -33,8 +33,8 @@ export function updateFlaisApplication(formData) {
 
     if (formData.kafka.active) {
         flaisApplication.spec.kafka.enabled = true;
-        flaisApplication.spec.kafka.acls[0].topic = formData.kafka.acl.topic;
-        flaisApplication.spec.kafka.acls[0].permission = formData.kafka.acl.permission;
+        flaisApplication.spec.kafka.acls[0].topic = formData.kafka.acls.topic;
+        flaisApplication.spec.kafka.acls[0].permission = formData.kafka.acls.permission;
     } else {
         delete flaisApplication.spec.kafka;
     }
@@ -61,6 +61,5 @@ export function updateFlaisApplication(formData) {
         delete flaisApplication.spec.ingress;
     }
 
-    console.log(flaisApplication)
     return jsYaml.dump(flaisApplication);
 }
