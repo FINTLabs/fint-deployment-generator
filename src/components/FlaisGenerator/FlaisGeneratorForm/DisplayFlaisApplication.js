@@ -1,17 +1,16 @@
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
-import * as jsyaml from 'js-yaml';
+import {updateFlaisApplication} from "./UpdateFlaisValues";
 
-const JsonDisplay = ({ open, handleClose, jsonData }) => {
+const DisplayFlaisApplication = ({ open, handleClose, formData }) => {
+    const yamlData = updateFlaisApplication(formData);
+
     const downloadYaml = () => {
-        const yamlText = jsyaml.dump(jsonData);
-        const blob = new Blob([yamlText], { type: 'text/yaml' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'flais.yaml';
-        a.click();
-        URL.revokeObjectURL(url);
+        const blob = new Blob([yamlData], { type: 'text/yaml' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'data.yaml';
+        link.click();
     };
 
     return (
@@ -21,9 +20,9 @@ const JsonDisplay = ({ open, handleClose, jsonData }) => {
             scroll='paper'
             PaperProps={{ style: { maxWidth: '600px', width: '90%' } }}
         >
-            <DialogTitle>Form JSON Data</DialogTitle>
+            <DialogTitle>Form YAML Data</DialogTitle>
             <DialogContent dividers={true} style={{ fontSize: '1rem' }}>
-                <pre>{JSON.stringify(jsonData, null, 2)}</pre>
+                <pre>{yamlData}</pre>
             </DialogContent>
             <DialogActions>
                 <Button onClick={downloadYaml} color="primary">
@@ -37,4 +36,4 @@ const JsonDisplay = ({ open, handleClose, jsonData }) => {
     );
 };
 
-export default JsonDisplay;
+export default DisplayFlaisApplication;

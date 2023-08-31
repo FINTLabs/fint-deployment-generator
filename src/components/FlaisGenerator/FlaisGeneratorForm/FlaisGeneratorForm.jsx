@@ -1,13 +1,9 @@
-import {initialFormData} from "./FormData.ts";
+import {initialFormData} from "./Data/FormData.ts";
 import {
     Divider,
     Paper,
     Stack,
     Typography,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
     Button
 } from "@mui/material";
 import {useState} from "react";
@@ -16,7 +12,7 @@ import BasicInfoForm from "./BasicInfoForm";
 import DynamicKeyValForm from "./DynamicKeyValForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretsForm from "./SecretsForm";
-import JsonDisplay from "./JsonDisplay";
+import DisplayFlaisApplication from "./DisplayFlaisApplication";
 
 
 const FlaisGeneratorForm = () => {
@@ -69,7 +65,7 @@ const FlaisGeneratorForm = () => {
                 Show JSON
             </Button>
 
-            <JsonDisplay open={open} handleClose={handleClose} jsonData={form}/>
+            <DisplayFlaisApplication open={open} handleClose={handleClose} formData={form}/>
 
         </div>
     );
