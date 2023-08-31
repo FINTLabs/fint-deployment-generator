@@ -59,7 +59,6 @@ export function updateFlaisApplication(formData) {
     }
 
     if (formData.database.active) {
-        flaisApplication.spec.database.enabled = true;
         flaisApplication.spec.database.database = formData.database.name;
     } else {
         delete flaisApplication.spec.database;
