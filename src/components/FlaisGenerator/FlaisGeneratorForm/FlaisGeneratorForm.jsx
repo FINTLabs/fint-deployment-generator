@@ -11,8 +11,9 @@ import ResourceForm from "./Forms/ResourceForm";
 import BasicInfoForm from "./Forms/BasicInfoForm";
 import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
-import SecretsForm from "./Forms/SecretsForm";
+import SecretsForm from "./Forms/SecretReferencesForm";
 import DisplayFlaisApplication from "./DisplayFlaisApplication";
+import SecretReferencesForm from "./Forms/SecretReferencesForm";
 
 
 const FlaisGeneratorForm = () => {
@@ -47,7 +48,7 @@ const FlaisGeneratorForm = () => {
                     {renderSection("Basic Info", <BasicInfoForm form={form} handleChange={handleChange}/>)}
                     {renderSection("Resources", <ResourceForm form={form} setForm={setForm}/>)}
                     {renderSection("Environment Variables", <EnvironmentVariablesForm form={form} setForm={setForm}/>)}
-                    {renderSection("Secret References", <SecretsForm form={form} setForm={setForm} fieldKey="secretReferences"/>)}
+                    {renderSection("Secret References", <SecretReferencesForm form={form} setForm={setForm}/>)}
                     {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm} handleChange={handleChange}/>)}
                 </Stack>
             </form>
