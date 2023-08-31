@@ -6,6 +6,7 @@ import DatabaseFields from "./Fields/DatabaseFields";
 import UrlFields from "./Fields/UrlFields";
 import KafkaFields from "./Fields/KafkaFields";
 import {Stack} from "@mui/material";
+import IngressFields from "./Fields/IngressFields";
 
 const FeaturesForm = ({form, setForm}) => {
 
@@ -65,7 +66,7 @@ const FeaturesForm = ({form, setForm}) => {
                     isActive={form.ingress.active}
                     onToggle={() => handleToggle('ingress')}
                 >
-                    <UrlFields form={form} handleChange={handleChange}/>
+                    <IngressFields form={form} handleChange={handleChange}/>
                 </ToggleFieldGroup>
 
                 <ToggleFieldGroup

@@ -13,7 +13,7 @@ const IngressFields = ({ form, handleChange }) => {
             <TextField
                 name="middleware"
                 label="Middleware"
-                value={form.ingress.middleware}
+                value={form.ingress.middlewares}
                 onChange={handleChange('ingress', 'middleware')}
             />
         </Stack>
