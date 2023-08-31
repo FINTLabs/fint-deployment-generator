@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
-import {updateFlaisApplication} from "./UpdateFlaisValues";
+import { updateFlaisApplication } from "./UpdateFlaisValues";
 
 const DisplayFlaisApplication = ({ open, handleClose, formData }) => {
     const yamlData = updateFlaisApplication(formData);
@@ -11,6 +11,14 @@ const DisplayFlaisApplication = ({ open, handleClose, formData }) => {
         link.href = window.URL.createObjectURL(blob);
         link.download = 'data.yaml';
         link.click();
+    };
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(yamlData).then(() => {
+            console.log('YAML data copied to clipboard');
+        }).catch(() => {
+            console.error('Failed to copy YAML data to clipboard');
+        });
     };
 
     return (
@@ -25,6 +33,9 @@ const DisplayFlaisApplication = ({ open, handleClose, formData }) => {
                 <pre>{yamlData}</pre>
             </DialogContent>
             <DialogActions>
+                <Button onClick={copyToClipboard} color="primary">
+                    Copy to Clipboard
+                </Button>
                 <Button onClick={downloadYaml} color="primary">
                     Download
                 </Button>

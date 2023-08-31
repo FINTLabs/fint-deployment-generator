@@ -22,35 +22,27 @@ spec:
     port: "80"
     path: /prometheus
   env:
-    - name: ENV1
-      value: test
-    - name: ENV2
-      value: test
-    - name: ENV3
-      value: test
+    - name: 
+      value: 
   envFrom:
     - secretRef:
-        name: flais-test-application-secret
+        name: 
   onePassword:
-    itemPath: "vaults/aks-alpha-vault/items/azurerator"
+    itemPath: 
   kafka:
     enabled: true
     acls:
-      - topic: '*.test.topic'
-        permission: read
-      - topic: '*.test2.topic'
-        permission: admin
+      - topic: 
+        permission: 
   database:
-    enabled: true # deprecated
-    database: fint-kontroll
+    database: 
   url:
-    hostname: test.flais.io
-    basePath: /alpha/fintlabs-no
+    hostname: 
+    basePath: 
   ingress:
     enabled: true
-    basePath: /alpha/fintlabs-no/api/users
-    middlewares:
-      - fint-kontroll-sso
+    basePath: 
+    middlewares: 
   resources:
     limits:
       memory: "1024Mi"
@@ -59,7 +51,7 @@ spec:
       memory: "128Mi"
       cpu: "100m"
   restartPolicy: Always
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate: { maxSurge: 1, maxUnavailable: 0 }
