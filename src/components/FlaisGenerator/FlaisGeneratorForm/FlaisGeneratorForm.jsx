@@ -7,11 +7,11 @@ import {
     Button
 } from "@mui/material";
 import {useState} from "react";
-import ResourceForm from "./ResourceForm";
-import BasicInfoForm from "./BasicInfoForm";
-import DynamicKeyValForm from "./DynamicKeyValForm";
+import ResourceForm from "./Forms/ResourceForm";
+import BasicInfoForm from "./Forms/BasicInfoForm";
+import DynamicKeyValForm from "./Forms/DynamicKeyValForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
-import SecretsForm from "./SecretsForm";
+import SecretsForm from "./Forms/SecretsForm";
 import DisplayFlaisApplication from "./DisplayFlaisApplication";
 
 
@@ -62,7 +62,7 @@ const FlaisGeneratorForm = () => {
                 onClick={handleClickOpen}
                 style={{margin: '1rem 0'}}
             >
-                Show JSON
+                Show Flais Application
             </Button>
 
             <DisplayFlaisApplication open={open} handleClose={handleClose} formData={form}/>
