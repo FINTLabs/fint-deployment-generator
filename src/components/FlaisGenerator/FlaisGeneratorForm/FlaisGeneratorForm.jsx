@@ -32,10 +32,6 @@ const FlaisGeneratorForm = () => {
         setForm(prevForm => ({...prevForm, [name]: value}));
     };
 
-    const showJsonData = () => {
-        alert(JSON.stringify(form, null, 2));
-    };
-
     const renderSection = (title, component) => (
         <Paper elevation={3} style={{padding: "16px"}}>
             <Typography variant="h6">{title}</Typography>

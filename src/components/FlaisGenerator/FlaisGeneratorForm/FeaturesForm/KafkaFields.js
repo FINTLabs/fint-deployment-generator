@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
 import {InputLabel, MenuItem, Select, Stack, TextField, FormControl} from '@mui/material';
 
 const KafkaFields = ({ form, handleChange }) => {
-
 
     return (
         <Stack spacing={2}>
