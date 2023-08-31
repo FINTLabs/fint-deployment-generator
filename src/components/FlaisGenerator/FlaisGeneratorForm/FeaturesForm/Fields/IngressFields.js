@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {Stack, TextField, Button, IconButton} from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const IngressFields = ({ form, handleChange }) => {
     const [localMiddlewares, setLocalMiddlewares] = useState(form.ingress.middlewares || []);
-
-    // Step 2: Type Check During Runtime
-    useEffect(() => {
-        console.log("Setting local middlewares to: ", form.ingress.middlewares);  // Debugging log
-        if (Array.isArray(form.ingress.middlewares)) {  // Type-checking before setting
-            setLocalMiddlewares(form.ingress.middlewares);
-        } else {
-            console.error("Expected form.ingress.middlewares to be an array, got ", form.ingress.middlewares);  // Debugging log
-        }
-    }, [form.ingress.middlewares]);
 
     const handleLocalChange = (index) => (event) => {
         const newMiddlewares = [...localMiddlewares];
@@ -45,8 +35,7 @@ const IngressFields = ({ form, handleChange }) => {
                 value={form.ingress.basePath}
                 onChange={handleChange('ingress', 'basePath')}
             />
-            {/* Step 4: Type Check Before .map */}
-            {Array.isArray(localMiddlewares) && localMiddlewares.map((middleware, index) => (
+            {localMiddlewares.map((middleware, index) => (
                 <Stack direction="row" spacing={1} key={index}>
                     <TextField
                         name={`middleware-${index}`}
