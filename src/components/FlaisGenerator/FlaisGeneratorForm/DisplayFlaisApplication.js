@@ -9,7 +9,7 @@ const DisplayFlaisApplication = ({ open, handleClose, formData }) => {
         const blob = new Blob([yamlData], { type: 'text/yaml' });
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
-        link.download = 'data.yaml';
+        link.download = 'flais.yaml';
         link.click();
     };
 
