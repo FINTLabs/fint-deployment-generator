@@ -52,11 +52,15 @@ export function updateFlaisApplication(formData) {
 
     if (formData.kafka.active) {
         flaisApplication.spec.kafka.enabled = true;
-        flaisApplication.spec.kafka.acls[0].topic = formData.kafka.acls.topic;
-        flaisApplication.spec.kafka.acls[0].permission = formData.kafka.acls.permission;
+
+        flaisApplication.spec.kafka.acls = formData.kafka.acls.map(acl => ({
+            topic: acl.topic,
+            permission: acl.permission,
+        }));
     } else {
         delete flaisApplication.spec.kafka;
     }
+
 
     if (formData.database.active) {
         flaisApplication.spec.database.database = formData.database.name;
