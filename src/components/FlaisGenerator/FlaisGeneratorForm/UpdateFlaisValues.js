@@ -74,7 +74,11 @@ export function updateFlaisApplication(formData) {
     if (formData.ingress.active) {
         flaisApplication.spec.ingress.enabled = true;
         flaisApplication.spec.ingress.basePath = formData.ingress.basePath;
-        flaisApplication.spec.ingress.middlewares = formData.ingress.middlewares;
+        if (formData.ingress.middlewares.length === 0) {
+            delete flaisApplication.spec.ingress.middlewares;
+        } else {
+            flaisApplication.spec.ingress.middlewares = formData.ingress.middlewares;
+        }
     } else {
         delete flaisApplication.spec.ingress;
     }
