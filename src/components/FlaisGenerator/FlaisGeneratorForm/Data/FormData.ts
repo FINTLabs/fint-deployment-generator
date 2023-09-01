@@ -82,7 +82,10 @@ export const initialFormData: FormData = {
     },
     kafka: {
         active: false,
-        acls: []
+        acls: [{
+            topic: "",
+            permission: "read"
+        }]
     },
     database: {
         active: false,
