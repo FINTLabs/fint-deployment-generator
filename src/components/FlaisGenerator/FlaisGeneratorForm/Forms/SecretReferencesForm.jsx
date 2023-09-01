@@ -40,7 +40,7 @@ const SecretReferencesForm = ({ form, setForm }) => {
                 </Stack>
             ))}
             <Button variant="contained" color="primary" onClick={addPair}>
-                Add Pair
+                Add Secret
             </Button>
         </Stack>
     );

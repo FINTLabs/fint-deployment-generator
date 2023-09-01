@@ -45,7 +45,7 @@ const EnvironmentVariablesForm = ({ form, setForm }) => {
                 </Stack>
             ))}
             <Button variant="contained" color="primary" onClick={addPair}>
-                Add Pair
+                Add Env Variable
             </Button>
         </Stack>
     );
