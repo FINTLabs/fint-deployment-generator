@@ -18,8 +18,8 @@ const ResourceForm = ({form, setForm}) => {
     };
 
     return (
-        <Stack spacing={2}>
-            <Typography variant="subtitle1">Limits</Typography>
+        <Stack spacing={2} className="m-4">
+            <Typography variant="subtitle1" >Limits</Typography>
             <TextField
                 label="Memory"
                 name="memory"

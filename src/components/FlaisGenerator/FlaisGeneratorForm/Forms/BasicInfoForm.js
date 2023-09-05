@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select, TextField, Stack } from "@mu
 
 const BasicInfoForm = ({ form, handleChange }) => {
     return (
-        <Stack spacing={2}>
+        <Stack spacing={2} className="m-4">
             <TextField
                 fullWidth
                 label="Name"

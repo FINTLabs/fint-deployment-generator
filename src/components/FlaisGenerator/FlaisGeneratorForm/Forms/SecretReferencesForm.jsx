@@ -26,7 +26,7 @@ const SecretReferencesForm = ({ form, setForm }) => {
     };
 
     return (
-        <Stack spacing={2}>
+        <Stack spacing={2} className="m-4">
             {keyValPairs.map((pair, index) => (
                 <Stack direction="row" spacing={1} key={index}>
                     <TextField

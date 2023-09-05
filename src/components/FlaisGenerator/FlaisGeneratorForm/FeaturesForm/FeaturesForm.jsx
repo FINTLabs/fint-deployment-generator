@@ -33,7 +33,7 @@ const FeaturesForm = ({form, setForm}) => {
 
     return (
         <>
-            <Stack spacing={2}>
+            <Stack spacing={2} className="m-4">
                 <ToggleFieldGroup
                     label="prometheus"
                     isActive={form.prometheus.active}

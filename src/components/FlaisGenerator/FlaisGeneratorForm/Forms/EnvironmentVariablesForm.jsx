@@ -26,7 +26,7 @@ const EnvironmentVariablesForm = ({ form, setForm }) => {
     };
 
     return (
-        <Stack spacing={2}>
+        <Stack spacing={2} className="m-4">
             {keyValPairs.map((pair, index) => (
                 <Stack direction="row" spacing={1} key={index}>
                     <TextField
@@ -44,7 +44,7 @@ const EnvironmentVariablesForm = ({ form, setForm }) => {
                     </IconButton>
                 </Stack>
             ))}
-            <Button variant="contained" color="primary" onClick={addPair}>
+            <Button variant="contained" color="primary" onClick={addPair} >
                 Add Env Variable
             </Button>
         </Stack>
