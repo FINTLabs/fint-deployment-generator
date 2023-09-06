@@ -10,21 +10,12 @@ import ResourceForm from "./Forms/ResourceForm";
 import BasicInfoForm from "./Forms/BasicInfoForm";
 import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
-import DisplayFlaisApplication from "./DisplayFlaisApplication";
 import SecretReferencesForm from "./Forms/SecretReferencesForm";
+import FooterButtons from "./FooterButtons/FooterButtons";
 
 
 const FlaisGeneratorForm = () => {
     const [form, setForm] = useState(initialFormData);
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -51,18 +42,7 @@ const FlaisGeneratorForm = () => {
                 </div>
             </form>
 
-            <div className="pb-16">
-                <div className="fixed bottom-0 left-0 right-0 h-16 flex items-center justify-center z-50">
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={handleClickOpen}
-                    >
-                        Show Flais Application
-                    </Button>
-                </div>
-            </div>
-            <DisplayFlaisApplication open={open} handleClose={handleClose} formData={form}/>
+            <FooterButtons formData={form}/>
         </div>
     );
 };
