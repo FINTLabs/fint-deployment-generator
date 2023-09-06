@@ -33,51 +33,54 @@ const FeaturesForm = ({form, setForm}) => {
 
     return (
         <>
-            <Stack spacing={2} className="m-4">
-                <ToggleFieldGroup
-                    label="prometheus"
-                    isActive={form.prometheus.active}
-                    onToggle={() => handleToggle('prometheus')}
-                >
-                    <PrometheusFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-                <ToggleFieldGroup
-                    label="onePassword"
-                    isActive={form.onePassword.active}
-                    onToggle={() => handleToggle('onePassword')}
-                >
-                    <OnePasswordFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-                <ToggleFieldGroup
-                    label="database"
-                    isActive={form.database.active}
-                    onToggle={() => handleToggle('database')}
-                >
-                    <DatabaseFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-                <ToggleFieldGroup
-                    label="url"
-                    isActive={form.url.active}
-                    onToggle={() => handleToggle('url')}
-                >
-                    <UrlFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-                <ToggleFieldGroup
-                    label="ingress"
-                    isActive={form.ingress.active}
-                    onToggle={() => handleToggle('ingress')}
-                >
-                    <IngressFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-
-                <ToggleFieldGroup
-                    label="kafka"
-                    isActive={form.kafka.active}
-                    onToggle={() => handleToggle('kafka')}
-                >
-                    <KafkaFields form={form} handleChange={handleChange}/>
-                </ToggleFieldGroup>
-            </Stack>
+            <div className="m-4 grid grid-cols-2 gap-4">
+                <Stack spacing={2}>
+                    <ToggleFieldGroup
+                        label="prometheus"
+                        isActive={form.prometheus.active}
+                        onToggle={() => handleToggle('prometheus')}
+                    >
+                        <PrometheusFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                    <ToggleFieldGroup
+                        label="onePassword"
+                        isActive={form.onePassword.active}
+                        onToggle={() => handleToggle('onePassword')}
+                    >
+                        <OnePasswordFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                    <ToggleFieldGroup
+                        label="database"
+                        isActive={form.database.active}
+                        onToggle={() => handleToggle('database')}
+                    >
+                        <DatabaseFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                </Stack>
+                <Stack spacing={2}>
+                    <ToggleFieldGroup
+                        label="url"
+                        isActive={form.url.active}
+                        onToggle={() => handleToggle('url')}
+                    >
+                        <UrlFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                    <ToggleFieldGroup
+                        label="ingress"
+                        isActive={form.ingress.active}
+                        onToggle={() => handleToggle('ingress')}
+                    >
+                        <IngressFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                    <ToggleFieldGroup
+                        label="kafka"
+                        isActive={form.kafka.active}
+                        onToggle={() => handleToggle('kafka')}
+                    >
+                        <KafkaFields form={form} handleChange={handleChange} />
+                    </ToggleFieldGroup>
+                </Stack>
+            </div>
         </>
     );
 };
