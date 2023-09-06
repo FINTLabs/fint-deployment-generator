@@ -20,38 +20,48 @@ const KafkaFields = ({ form, handleChange }) => {
     };
 
     return (
-        <Stack spacing={2}>
+        <div className="space-y-4 flex flex-col">
             {form.kafka.acls.map((acl, index) => (
-                <Stack key={index} direction="row" spacing={2}>
+                <div key={index} className="flex flex-col space-y-4">
                     <TextField
                         name="kafkatopic"
                         label="Topic"
                         value={acl.topic}
                         onChange={handleAclChange(index, "topic")}
+                        className="w-full" // 100% width
                     />
-                    <FormControl>
-                        <InputLabel id={`kafkapermission-select-label-${index}`}>Permission</InputLabel>
-                        <Select
-                            labelId={`kafkapermission-select-label-${index}`}
-                            name="kafkapermission"
-                            label="Permission"
-                            value={acl.permission}
-                            onChange={handleAclChange(index, "permission")}
-                        >
-                            <MenuItem value={"admin"}>admin</MenuItem>
-                            <MenuItem value={"read"}>read</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <IconButton onClick={() => removeAcl(index)}>
-                        <DeleteIcon />
-                    </IconButton>
-                </Stack>
+                    <div className="flex space-x-4">
+                        <FormControl className="w-1/2"> {/* 50% width */}
+                            <InputLabel id={`kafkapermission-select-label-${index}`}>Permission</InputLabel>
+                            <Select
+                                labelId={`kafkapermission-select-label-${index}`}
+                                name="kafkapermission"
+                                label="Permission"
+                                value={acl.permission}
+                                onChange={handleAclChange(index, "permission")}
+                                fullWidth
+                            >
+                                <MenuItem value={"admin"}>admin</MenuItem>
+                                <MenuItem value={"read"}>read</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <IconButton onClick={() => removeAcl(index)} className="w-1/6">
+                            <DeleteIcon />
+                        </IconButton>
+                    </div>
+                </div>
             ))}
-            <Button variant="outlined" color="primary" onClick={addNewAcl}>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={addNewAcl}
+                className="text-primary border-primary"
+            >
                 Add New ACL
             </Button>
-        </Stack>
+        </div>
     );
+
 };
 
 export default KafkaFields;
