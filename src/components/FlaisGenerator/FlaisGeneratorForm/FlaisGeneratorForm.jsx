@@ -51,17 +51,18 @@ const FlaisGeneratorForm = () => {
                 </div>
             </form>
 
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={handleClickOpen}
-                style={{margin: '1rem 0'}}
-            >
-                Show Flais Application
-            </Button>
-
+            <div className="pb-16">
+                <div className="fixed bottom-0 left-0 right-0 h-16 flex items-center justify-center z-50">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleClickOpen}
+                    >
+                        Show Flais Application
+                    </Button>
+                </div>
+            </div>
             <DisplayFlaisApplication open={open} handleClose={handleClose} formData={form}/>
-
         </div>
     );
 };

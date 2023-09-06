@@ -3,11 +3,12 @@ import FlaisGeneratorForm from "./FlaisGeneratorForm/FlaisGeneratorForm";
 
 const FlaisGenerator = () => {
     return (
-        <div>
-            <h1>Flais Generator</h1>
+        <div className="h-screen">
+            <h1 className="text-4xl font-bold text-center my-4 mx-2">Flais Generator</h1>
             <FlaisGeneratorForm />
         </div>
     )
 }
+
 
 export default FlaisGenerator;
