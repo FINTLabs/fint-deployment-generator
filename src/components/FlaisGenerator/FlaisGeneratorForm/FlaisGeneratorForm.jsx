@@ -11,6 +11,7 @@ import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretReferencesForm from "./Forms/SecretReferencesForm";
 import FooterButtons from "./FooterButtons/FooterButtons";
+import OrganizationsForm from "./OrganizationsForm/OrganizationForm";
 
 
 const FlaisGeneratorForm = () => {
@@ -41,6 +42,7 @@ const FlaisGeneratorForm = () => {
                 </div>
             </form>
 
+            <OrganizationsForm/>
             <FooterButtons formData={form}/>
         </div>
     );

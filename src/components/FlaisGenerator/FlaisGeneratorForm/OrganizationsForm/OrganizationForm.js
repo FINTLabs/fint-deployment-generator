@@ -1,47 +1,70 @@
-import React, { useState } from 'react';
-import { Typography, Divider, FormControlLabel, Checkbox } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
 import {organizationData} from "../Data/OrganizationData";
 
-const OrganizationsForm = () => {
-    const [orgData, setOrgData] = useState(organizationData)
+const OrganizationForm = () => {
+    const [orgData, setOrgData] = useState(organizationData);
+    const [orgNames, setOrgNames] = useState([]);
+    const [selectedOrgs, setSelectedOrgs] = useState([]);
 
-    const organizations = Object.keys(orgData);
+    useEffect(() => {
+        // Extract the names of the organizations from orgData
+        const names = Object.keys(orgData).map(key => orgData[key].name);
+        setOrgNames(names);
 
-    const handleCheckboxChange = (e) => {
-        const { name, checked } = e.target;
-        setOrgData((prevState) => ({
-            ...prevState,
-            [name]: {
-                ...prevState[name],
-                active: checked,
-            },
-        }));
+        // Populate selectedOrgs with names of active organizations
+        const activeOrgs = names.filter(name => {
+            const key = Object.keys(orgData).find(k => orgData[k].name === name);
+            return orgData[key].active;
+        });
+        setSelectedOrgs(activeOrgs);
+    }, [orgData]);
+
+    const handleChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setSelectedOrgs(
+            typeof value === 'string' ? value.split(',') : value,
+        );
+
+        // Update the active status in orgData
+        let newOrgData = { ...orgData };
+        Object.keys(newOrgData).forEach(key => {
+            newOrgData[key].active = value.includes(newOrgData[key].name);
+        });
+        setOrgData(newOrgData);
     };
 
     return (
-        <>
-            <Divider style={{ margin: '16px 0' }} />
-            <Typography align='center' variant='h6'>
-                Organizations
-            </Typography>
-            <div className='flex flex-wrap justify-center'>
-                {organizations.map((org, index) => (
-                    <FormControlLabel
-                        key={`${org}-${index}`}
-                        control={
-                            <Checkbox
-                                checked={orgData[org].active}
-                                onChange={handleCheckboxChange}
-                                name={org}
-                                color='primary'
-                            />
-                        }
-                        label={orgData[org].name}
-                    />
-                ))}
-            </div>
-        </>
+        <div>
+            <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Organizations</InputLabel>
+                <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    multiple
+                    value={selectedOrgs}
+                    onChange={handleChange}
+                    input={<OutlinedInput label="Organizations" />}
+                    renderValue={(selected) => selected.join(', ')}
+                >
+                    {orgNames.map((name) => (
+                        <MenuItem key={name} value={name}>
+                            <Checkbox checked={selectedOrgs.indexOf(name) > -1} />
+                            <ListItemText primary={name} />
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </div>
     );
 };
 
-export default OrganizationsForm;
+export default OrganizationForm;
