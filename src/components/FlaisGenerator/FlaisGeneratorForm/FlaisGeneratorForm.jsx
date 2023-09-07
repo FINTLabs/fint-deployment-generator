@@ -2,8 +2,7 @@ import {initialFormData} from "./Data/FormData.ts";
 import {
     Divider,
     Paper,
-    Typography,
-    Button
+    Typography
 } from "@mui/material";
 import {useState} from "react";
 import ResourceForm from "./Forms/ResourceForm";
