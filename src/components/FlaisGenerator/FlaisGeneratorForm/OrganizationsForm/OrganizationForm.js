@@ -4,7 +4,7 @@ import Checkbox from '@mui/material/Checkbox';
 import ListItemText from '@mui/material/ListItemText';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import {organizationData} from "../Data/OrganizationData";
+import { organizationData } from "../Data/OrganizationData";
 
 const OrganizationForm = () => {
     const [orgData, setOrgData] = useState(organizationData);
@@ -32,6 +32,18 @@ const OrganizationForm = () => {
         setOrgData(newOrgData);
     };
 
+    const filterOptions = (options, { inputValue }) => {
+        const matchFromName = options.filter(
+            option => option.toLowerCase().includes(inputValue.toLowerCase())
+        );
+
+        const matchFromKey = Object.keys(orgData).filter(
+            key => key.toLowerCase().includes(inputValue.toLowerCase())
+        ).map(key => orgData[key].name);
+
+        return [...new Set([...matchFromName, ...matchFromKey])];
+    };
+
     return (
         <div>
             <FormControl sx={{ m: 1, width: 300 }}>
@@ -42,6 +54,7 @@ const OrganizationForm = () => {
                     disableCloseOnSelect
                     value={selectedOrgs}
                     onChange={handleChange}
+                    filterOptions={filterOptions}
                     getOptionLabel={(option) => option}
                     isOptionEqualToValue={(option, value) => option === value}
                     renderOption={(props, option, { selected }) => (
