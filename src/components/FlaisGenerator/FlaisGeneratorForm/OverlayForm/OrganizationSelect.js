@@ -5,7 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import {organizationData} from "../Data/OrganizationData";
 
-const OrganizationForm = () => {
+const OrganizationSelect = () => {
     const [orgData, setOrgData] = useState(organizationData);
     const [orgNames, setOrgNames] = useState([]);
     const [selectedOrgs, setSelectedOrgs] = useState([]);
@@ -74,4 +74,4 @@ const OrganizationForm = () => {
     );
 };
 
-export default OrganizationForm;
+export default OrganizationSelect;

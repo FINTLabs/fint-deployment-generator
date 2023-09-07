@@ -11,7 +11,8 @@ import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretReferencesForm from "./Forms/SecretReferencesForm";
 import FooterButtons from "./FooterButtons/FooterButtons";
-import OrganizationsForm from "./OrganizationsForm/OrganizationForm";
+import OrganizationsForm from "./OverlayForm/OrganizationSelect";
+import OverlayForm from "./OverlayForm/OverlayForm";
 
 
 const FlaisGeneratorForm = () => {
@@ -41,8 +42,8 @@ const FlaisGeneratorForm = () => {
                     {renderSection("Feature Toggles", <FeaturesForm form={form} setForm={setForm}/>, "self-start col-span-2")}
                 </div>
             </form>
-
-            <OrganizationsForm/>
+            <Divider style={{margin: "24px 0"}}/>
+            <OverlayForm/>
             <FooterButtons formData={form}/>
         </div>
     );
