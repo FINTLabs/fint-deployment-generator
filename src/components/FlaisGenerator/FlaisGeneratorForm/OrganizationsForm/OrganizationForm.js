@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import FormControl from '@mui/material/FormControl';
 import Checkbox from '@mui/material/Checkbox';
-import ListItemText from '@mui/material/ListItemText';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { organizationData } from "../Data/OrganizationData";
+import {organizationData} from "../Data/OrganizationData";
 
 const OrganizationForm = () => {
     const [orgData, setOrgData] = useState(organizationData);
@@ -25,14 +24,14 @@ const OrganizationForm = () => {
     const handleChange = (event, value) => {
         setSelectedOrgs(value);
 
-        let newOrgData = { ...orgData };
+        let newOrgData = {...orgData};
         Object.keys(newOrgData).forEach(key => {
             newOrgData[key].active = value.includes(newOrgData[key].name);
         });
         setOrgData(newOrgData);
     };
 
-    const filterOptions = (options, { inputValue }) => {
+    const filterOptions = (options, {inputValue}) => {
         const matchFromName = options.filter(
             option => option.toLowerCase().includes(inputValue.toLowerCase())
         );
@@ -46,7 +45,7 @@ const OrganizationForm = () => {
 
     return (
         <div>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl sx={{m: 1, width: 300}}>
                 <Autocomplete
                     multiple
                     id="checkboxes-tags-demo"
@@ -57,17 +56,17 @@ const OrganizationForm = () => {
                     filterOptions={filterOptions}
                     getOptionLabel={(option) => option}
                     isOptionEqualToValue={(option, value) => option === value}
-                    renderOption={(props, option, { selected }) => (
+                    renderOption={(props, option, {selected}) => (
                         <li {...props}>
                             <Checkbox
-                                style={{ marginRight: 8 }}
+                                style={{marginRight: 8}}
                                 checked={selected}
                             />
                             {option}
                         </li>
                     )}
                     renderInput={(params) => (
-                        <TextField {...params} variant="outlined" label="Organizations" />
+                        <TextField {...params} variant="outlined" label="Organizations"/>
                     )}
                 />
             </FormControl>
