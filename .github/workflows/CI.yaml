@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +17,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.7.0
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Cache Node.js modules
         uses: actions/cache@v3.2.1
@@ -27,10 +28,13 @@ jobs:
             ${{ runner.OS }}-node-
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
 
       - name: Build project
-        run: npm run build
+        run: yarn build
 
       - name: Trigger CD
         if: github.ref == 'refs/heads/main'
