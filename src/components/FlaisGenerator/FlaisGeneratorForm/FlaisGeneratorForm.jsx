@@ -11,7 +11,6 @@ import EnvironmentVariablesForm from "./Forms/EnvironmentVariablesForm";
 import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretReferencesForm from "./Forms/SecretReferencesForm";
 import FooterButtons from "./FooterButtons/FooterButtons";
-import OrganizationsForm from "./OverlayForm/OrganizationSelect";
 import OverlayForm from "./OverlayForm/OverlayForm";
 
 
