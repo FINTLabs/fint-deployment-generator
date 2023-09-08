@@ -26,6 +26,7 @@ spec:
     enabled: true
     middlewares:
       - deployment-generator-sso
+    basePath: /
   resources:
     limits:
       memory: 512Mi
