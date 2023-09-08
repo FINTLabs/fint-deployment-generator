@@ -22,10 +22,6 @@ spec:
     path: /actuator/prometheus
   url:
     hostname: deployment.fintlabs.no
-  ingress:
-    enabled: true
-    middlewares:
-      - deployment-generator-sso
     basePath: /
   resources:
     limits:
