@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import {baseKustomization} from "../../Data/KustomizationFiles";
 
 const GenerateKustomization = ({ yaml, environments, organizations }) => {
     const generateFiles = () => {
@@ -12,7 +13,7 @@ const GenerateKustomization = ({ yaml, environments, organizations }) => {
 
         // Create flais.yaml and kustomization.yaml in the base directory
         baseFolder.file("flais.yaml", yaml);
-        baseFolder.file("kustomization.yaml", "some content"); // Replace with actual content
+        baseFolder.file("kustomization.yaml", baseKustomization); // Replace with actual content
 
         // Create overlays directory
         const overlaysFolder = zip.folder("kustomization/overlays");
