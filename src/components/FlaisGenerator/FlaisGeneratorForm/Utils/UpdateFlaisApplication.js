@@ -1,15 +1,19 @@
 import jsYaml from "js-yaml";
 import {flaisYamlString} from "../Data/FlaisData.js";
 
+export function updateFlaisMetadata(yaml: jsYaml, formData) {
+    yaml.metadata.name = formData.name;
+    yaml.metadata.labels["app.kubernetes.io/name"] = formData.name;
+    yaml.metadata.labels["app.kubernetes.io/instance"] = `${formData.name}_fintlabs_no`;
+    yaml.metadata.labels["app.kubernetes.io/component"] = formData.component;
+    yaml.metadata.labels["app.kubernetes.io/part-of"] = formData.partOf;
+    yaml.metadata.labels["fintlabs.no/team"] = formData.team;
+}
+
 export function updateFlaisApplication(formData) {
     const flaisApplication = jsYaml.load(flaisYamlString)
 
-    flaisApplication.metadata.name = formData.name;
-    flaisApplication.metadata.labels["app.kubernetes.io/name"] = formData.name;
-    flaisApplication.metadata.labels["app.kubernetes.io/instance"] = `${formData.name}_fintlabs_no`;
-    flaisApplication.metadata.labels["app.kubernetes.io/component"] = formData.component;
-    flaisApplication.metadata.labels["app.kubernetes.io/part-of"] = formData.partOf;
-    flaisApplication.metadata.labels["fintlabs.no/team"] = formData.team;
+    updateFlaisMetadata(flaisApplication, formData)
     flaisApplication.spec.port = formData.port;
 
     flaisApplication.spec.resources.limits.memory = formData.resources.limits.memory;
