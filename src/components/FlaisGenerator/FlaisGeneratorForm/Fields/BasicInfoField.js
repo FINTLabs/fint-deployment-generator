@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select, TextField, Stack } from "@mui/material";
 
-const BasicInfoForm = ({ form, handleChange }) => {
+const BasicInfoField = ({ form, handleChange }) => {
     return (
         <Stack spacing={2} className="m-4">
             <TextField
@@ -67,4 +67,4 @@ const BasicInfoForm = ({ form, handleChange }) => {
     );
 };
 
-export default BasicInfoForm;
+export default BasicInfoField;

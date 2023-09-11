@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextField, Typography, Stack} from '@mui/material';
 
-const ResourceForm = ({form, setForm}) => {
+const ResourceField = ({form, setForm}) => {
 
     const handleResourceChange = (type, resource) => (event) => {
         const {value} = event.target;
@@ -50,4 +50,4 @@ const ResourceForm = ({form, setForm}) => {
     );
 };
 
-export default ResourceForm;
+export default ResourceField;

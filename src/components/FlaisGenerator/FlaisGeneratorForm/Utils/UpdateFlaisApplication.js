@@ -1,5 +1,5 @@
 import jsYaml from "js-yaml";
-import {flaisYamlString} from "./Data/FlaisData.js";
+import {flaisYamlString} from "../Data/FlaisData.js";
 
 export function updateFlaisApplication(formData) {
     const flaisApplication = jsYaml.load(flaisYamlString)

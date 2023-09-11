@@ -4,7 +4,7 @@ import {useState} from "react";
 import FooterButtons from "./FooterButtons/FooterButtons";
 import OverlayForm from "./OverlayForm/OverlayForm";
 import {flaisYamlString} from "./Data/FlaisData";
-import FlaisGeneratorFields from "./FlaisGeneratorFields";
+import FlaisGeneratorFields from "./Fields/FlaisGeneratorFields";
 
 
 const FlaisGeneratorForm = () => {
