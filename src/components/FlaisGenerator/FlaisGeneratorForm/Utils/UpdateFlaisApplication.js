@@ -1,7 +1,7 @@
 import jsYaml from "js-yaml";
 import {flaisYamlString} from "../Data/FlaisData.js";
 
-export function updateFlaisMetadata(yaml: jsYaml, formData) {
+function updateFlaisMetadata(yaml: jsYaml, formData) {
     yaml.metadata.name = formData.name;
     yaml.metadata.labels["app.kubernetes.io/name"] = formData.name;
     yaml.metadata.labels["app.kubernetes.io/instance"] = `${formData.name}_fintlabs_no`;
