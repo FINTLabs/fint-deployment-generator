@@ -19,7 +19,8 @@ const FlaisGeneratorForm = () => {
             <Divider style={{margin: "24px 0"}}/>
             <OverlayForm selectedEnvs={selectedEnvironments} setSelectedEnvs={setSelectedEnvironments}
                          selectedOrgs={selectedOrganizations} setSelectedOrgs={setSelectedOrganizations}/>
-            <FooterButtons formData={form} yaml={yaml} setYaml={setYaml}/>
+            <FooterButtons formData={form} yaml={yaml} setYaml={setYaml} environments={selectedEnvironments}
+                           organizations={selectedOrganizations}/>
         </div>
     );
 };
