@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button} from '@mui/material';
 import {updateFlaisApplication} from "../../Utils/UpdateFlaisApplication";
 
-const DisplayFlaisApplication = ({formData}) => {
+const DisplayFlaisApplication = ({ formData, yaml, setYaml}) => {
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
+        setYaml(updateFlaisApplication(formData))
         setOpen(true);
     };
 
@@ -13,10 +14,8 @@ const DisplayFlaisApplication = ({formData}) => {
         setOpen(false);
     };
 
-    const yamlData = updateFlaisApplication(formData);
-
     const downloadYaml = () => {
-        const blob = new Blob([yamlData], {type: 'text/yaml'});
+        const blob = new Blob([yaml], {type: 'text/yaml'});
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(blob);
         link.download = 'flais.yaml';
@@ -24,7 +23,7 @@ const DisplayFlaisApplication = ({formData}) => {
     };
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(yamlData).then(() => {
+        navigator.clipboard.writeText(yaml).then(() => {
             console.log('YAML data copied to clipboard');
         }).catch(() => {
             console.error('Failed to copy YAML data to clipboard');
@@ -48,7 +47,7 @@ const DisplayFlaisApplication = ({formData}) => {
             >
                 <DialogTitle>Form YAML Data</DialogTitle>
                 <DialogContent dividers={true} style={{fontSize: '1rem'}}>
-                    <pre>{yamlData}</pre>
+                    <pre>{yaml}</pre>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={copyToClipboard} color="primary">
