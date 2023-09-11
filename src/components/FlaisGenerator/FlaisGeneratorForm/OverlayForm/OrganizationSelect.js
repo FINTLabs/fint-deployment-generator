@@ -5,10 +5,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import {organizationData} from "../Data/OrganizationData";
 
-const OrganizationSelect = () => {
+const OrganizationSelect = ({ selectedOrgs, setSelectedOrgs }) => {
     const [orgData, setOrgData] = useState(organizationData);
     const [orgNames, setOrgNames] = useState([]);
-    const [selectedOrgs, setSelectedOrgs] = useState([]);
 
     useEffect(() => {
         const names = Object.keys(orgData).map(key => orgData[key].name);

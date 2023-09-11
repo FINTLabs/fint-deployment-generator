@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import FormControl from '@mui/material/FormControl';
 import Checkbox from '@mui/material/Checkbox';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-const EnvironmentSelect = () => {
-    const [selectedEnvironments, setSelectedEnvironments] = useState(['Beta']);
+const EnvironmentSelect = ({ selectedEnvironments, setSelectedEnvironments }) => {
     const environmentNames = ['Api', 'Beta', 'Alpha', 'Pwf'];
 
     const handleChange = (event, value) => {

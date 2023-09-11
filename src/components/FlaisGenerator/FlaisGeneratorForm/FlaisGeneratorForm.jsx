@@ -12,10 +12,14 @@ import FeaturesForm from "./FeaturesForm/FeaturesForm";
 import SecretReferencesForm from "./Forms/SecretReferencesForm";
 import FooterButtons from "./FooterButtons/FooterButtons";
 import OverlayForm from "./OverlayForm/OverlayForm";
+import {flaisYamlString} from "./Data/FlaisData";
 
 
 const FlaisGeneratorForm = () => {
     const [form, setForm] = useState(initialFormData);
+    const [yaml, setYaml] = useState(flaisYamlString)
+    const [selectedOrganizations, setSelectedOrganizations] = useState([])
+    const [selectedEnvironments, setSelectedEnvironments] = useState(['Beta']);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -42,8 +46,9 @@ const FlaisGeneratorForm = () => {
                 </div>
             </form>
             <Divider style={{margin: "24px 0"}}/>
-            <OverlayForm/>
-            <FooterButtons formData={form}/>
+            <OverlayForm selectedEnvs={selectedEnvironments} setSelectedEnvs={setSelectedEnvironments}
+                         selectedOrgs={selectedOrganizations} setSelectedOrgs={setSelectedOrganizations}/>
+            <FooterButtons formData={form} yaml={yaml} setYaml={setYaml}/>
         </div>
     );
 };
