@@ -2,29 +2,23 @@ import jsYaml from "js-yaml";
 import {flaisYamlString} from "../Data/FlaisData.js";
 import {overlayKustomization} from "../Data/KustomizationFiles";
 
-export function createKustomizeOverlay(formData) {
+export function createKustomizeOverlay(formData, orgName) {
     const kustomizeOverlay = jsYaml.load(overlayKustomization)
-    console.log(kustomizeOverlay)
+    const instanceName = `${formData.name}_${orgName.replace(".", "_")}`
 
+    kustomizeOverlay.namespace = orgName.replace(".", "-")
     kustomizeOverlay.commonLabels["app.kubernetes.io/name"] = formData.name;
-    kustomizeOverlay.commonLabels["app.kubernetes.io/instance"] = `${formData.name}_`;
+    kustomizeOverlay.commonLabels["app.kubernetes.io/instance"] = instanceName;
     kustomizeOverlay.commonLabels["app.kubernetes.io/component"] = formData.component;
     kustomizeOverlay.commonLabels["app.kubernetes.io/part-of"] = formData.partOf;
     kustomizeOverlay.commonLabels["fintlabs.no/team"] = formData.team;
-    kustomizeOverlay.patches[0].patch = kustomizeOverlay.patches[0].patch.replace("orgName", `${formData.name}_orgName`);
+    kustomizeOverlay.commonLabels["fintlabs.no/org-id"] = orgName;
+
+    kustomizeOverlay.patches[0].patch = kustomizeOverlay.patches[0].patch.replace("orgName", instanceName);
+    kustomizeOverlay.patches[0].patch = kustomizeOverlay.patches[0].patch.replace("orgName", orgName);
     kustomizeOverlay.patches[0].target.name = formData.name;
 
-    return kustomizeOverlay
-}
-
-export function replaceOrgInOverlay(yaml: jsYaml, orgName: string) {
-    yaml.namespace = orgName.replace(".", "-")
-    yaml.commonLabels["app.kubernetes.io/instance"] += orgName.replace(".", "_")
-    yaml.commonLabels["fintlabs.no/org-id"] = orgName
-    yaml.patches[0].patch = yaml.patches[0].patch.replace("orgName", orgName.replace(".", "_"));
-    yaml.patches[0].patch = yaml.patches[0].patch.replace("orgName", orgName);
-
-    return jsYaml.dump(yaml);
+    return jsYaml.dump(kustomizeOverlay);
 }
 
 export function updateFlaisApplication(formData) {
