@@ -24,10 +24,10 @@ patches:
   - patch: |-
       - op: replace
         path: "/metadata/labels/app.kubernetes.io~1instance"
-        value: ""
+        value: "orgName"
       - op: replace
         path: "/spec/orgId"
-        value: ""
+        value: "orgName"
     target:
       kind: Application
       name: ""

@@ -2,11 +2,13 @@ import React from "react";
 import { Button } from "@mui/material";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
-import { baseKustomization } from "../../Data/KustomizationFiles";
+import {baseKustomization, overlayKustomization} from "../../Data/KustomizationFiles";
+import {createKustomizeOverlay, replaceOrgInOverlay} from "../../Utils/UpdateFlaisApplication";
 
-const GenerateKustomization = ({ yaml, environments, organizations }) => {
+const GenerateKustomization = ({ formData, yaml, environments, organizations }) => {
     const generateFiles = () => {
         const zip = new JSZip();
+        const kustomizeOverlay = createKustomizeOverlay(formData)
 
         const baseFolder = zip.folder("kustomization/base");
 
@@ -22,7 +24,7 @@ const GenerateKustomization = ({ yaml, environments, organizations }) => {
                 const orgFolderName = org.key.replace(/\./g, "-");
                 const orgFolder = envFolder.folder(orgFolderName);
 
-                orgFolder.file("kustomization.yaml", "some content");
+                orgFolder.file("kustomization.yaml", replaceOrgInOverlay(kustomizeOverlay, org.key));
             });
         });
 
