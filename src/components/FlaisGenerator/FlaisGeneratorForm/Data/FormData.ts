@@ -3,7 +3,7 @@ export interface FormData {
     component: string;
     partOf: string;
     team: string;
-    port: string;
+    port: number;
     resources: {
         limits: {
             memory: string;
@@ -58,7 +58,7 @@ export const initialFormData: FormData = {
     component: "backend",
     partOf: "fint-core",
     team: "core",
-    port: "8080",
+    port: 8080,
     resources: {
         limits: {
             memory: "512Mi",
