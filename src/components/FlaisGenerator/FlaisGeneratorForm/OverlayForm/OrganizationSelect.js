@@ -24,7 +24,7 @@ const OrganizationSelect = ({ selectedOrgs, setSelectedOrgs }) => {
         });
 
         setSelectedOrgs(selectedOrgObjects);
-    }, [orgData]);
+    }, [orgData, setSelectedOrgs]);
 
     const handleChange = (event, value) => {
         setSelectedOrgs(
