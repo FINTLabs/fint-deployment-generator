@@ -1,14 +1,15 @@
 apiVersion: fintlabs.no/v1alpha1
 kind: FLAISSso
 metadata:
-  name: fint-deployment-generator
+  name: fint-deployment-generator-sso
   labels:
-    app.kubernetes.io/name: fint-deployment-generator
-    app.kubernetes.io/instance: fint-deployment-generator_fintlabs_no
+    app.kubernetes.io/name: fint-deployment-generator-sso
+    app.kubernetes.io/instance: fint-deployment-generator-sso_fintlabs_no
     app.kubernetes.io/version: latest
     app.kubernetes.io/component: sso
-    app.kubernetes.io/part-of: fint-flyt
-    fintlabs.no/team: flyt
+    app.kubernetes.io/part-of: fint-core
+    fintlabs.no/team: core
     fintlabs.no/org-id: fintlabs.no
 spec:
   hostname: deployment.fintlabs.no
+  basePath: /

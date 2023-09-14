@@ -7,33 +7,26 @@ metadata:
     app.kubernetes.io/name: fint-deployment-generator
     app.kubernetes.io/instance: fint-deployment-generator_fintlabs_no
     app.kubernetes.io/version: latest
-    app.kubernetes.io/component: backend
+    app.kubernetes.io/component: frontend
     app.kubernetes.io/part-of: fint-core
     fintlabs.no/team: core
     fintlabs.no/org-id: fintlabs.no
 spec:
-  port: 8080
+  port: 8000
+  imagePullPolicy: Always
   orgId: fintlabs.no
   image: ghcr.io/fintlabs/fint-deployment-generator:latest
-  imagePullPolicy: Always
-  prometheus:
-    enabled: true
-    port: '8080'
-    path: /actuator/prometheus
   url:
     hostname: deployment.fintlabs.no
     basePath: /
+  ingress:
+    enabled: true
+    basePath: /
+    middlewares:
+      - fint-deployment-generator-sso
   resources:
     limits:
-      memory: 512Mi
-      cpu: 500m
-    requests:
-      memory: 256Mi
-      cpu: 250m
+      memory: "128Mi"
+      cpu: "500m"
   restartPolicy: Always
   replicas: 1
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
