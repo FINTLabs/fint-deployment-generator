@@ -31,6 +31,7 @@ export function updateFlaisApplication(formData) {
     flaisApplication.metadata.labels["app.kubernetes.io/part-of"] = formData.partOf;
     flaisApplication.metadata.labels["fintlabs.no/team"] = formData.team;
 
+    flaisApplication.spec.image = `ghcr.io/fintlabs/${formData.name}:latest`;
     flaisApplication.spec.port = formData.port;
 
     flaisApplication.spec.resources.limits.memory = formData.resources.limits.memory;
