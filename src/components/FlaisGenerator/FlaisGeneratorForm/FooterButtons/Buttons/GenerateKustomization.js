@@ -34,7 +34,7 @@ const GenerateKustomization = ({ formData, yaml, environments, organizations }) 
         });
 
         zip.generateAsync({ type: "blob" }).then((blob) => {
-            saveAs(blob, "kustomization.zip");
+            saveAs(blob, "deployment.zip");
         });
     };
 
