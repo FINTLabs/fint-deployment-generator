@@ -1,13 +1,12 @@
 import React from "react";
-import { Button } from "@mui/material";
+import {Button} from "@mui/material";
 import JSZip from "jszip";
-import { saveAs } from "file-saver";
+import {saveAs} from "file-saver";
 import {baseKustomization} from "../../Data/KustomizationFiles";
 import {createKustomizeOverlay} from "../../Utils/UpdateFlaisApplication";
-import {ciBackend} from "../../Data/WorkflowData";
-import {createCDForBackend} from "../../Utils/WorkflowUtils";
+import {createCDForBackend, createCI} from "../../Utils/WorkflowUtils";
 
-const GenerateKustomization = ({ formData, yaml, environments, organizations }) => {
+const GenerateKustomization = ({formData, yaml, environments, organizations}) => {
     const generateFiles = () => {
         const zip = new JSZip();
 
@@ -17,7 +16,7 @@ const GenerateKustomization = ({ formData, yaml, environments, organizations }) 
         baseFolder.file("flais.yaml", yaml);
         baseFolder.file("kustomization.yaml", baseKustomization);
 
-        workflowFolder.file("CI.yaml", ciBackend)
+        workflowFolder.file("CI.yaml", createCI(formData))
         workflowFolder.file("CD.yaml", createCDForBackend(environments, organizations))
 
         const overlaysFolder = zip.folder("kustomize/overlays");
@@ -33,7 +32,7 @@ const GenerateKustomization = ({ formData, yaml, environments, organizations }) 
             });
         });
 
-        zip.generateAsync({ type: "blob" }).then((blob) => {
+        zip.generateAsync({type: "blob"}).then((blob) => {
             saveAs(blob, "deployment.zip");
         });
     };
