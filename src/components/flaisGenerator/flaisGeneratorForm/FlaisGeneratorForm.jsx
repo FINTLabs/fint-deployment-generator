@@ -1,10 +1,10 @@
-import {initialFormData} from "./Data/FormData.ts";
+import {initialFormData} from "./data/RequestForm.ts";
 import {Divider} from "@mui/material";
 import {useState} from "react";
-import FooterButtons from "./FooterButtons/FooterButtons";
-import OverlayForm from "./OverlayForm/OverlayForm";
-import {flaisYamlString} from "./Data/FlaisData";
-import FlaisGeneratorFields from "./Fields/FlaisGeneratorFields";
+import FooterButtons from "./footerButtons/FooterButtons";
+import OverlayForm from "./overlayForm/OverlayForm";
+import {flaisYamlString} from "./data/FlaisData";
+import FlaisGeneratorFields from "./fields/FlaisGeneratorFields";
 
 
 const FlaisGeneratorForm = () => {

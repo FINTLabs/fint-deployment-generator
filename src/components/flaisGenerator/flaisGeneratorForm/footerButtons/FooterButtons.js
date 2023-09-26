@@ -1,5 +1,5 @@
-import FlaisApplicationButton from "./Buttons/DisplayFlaisApplication";
-import GenerateKustomizeButton from "./Buttons/GenerateKustomization";
+import FlaisApplicationButton from "./buttons/DisplayFlaisApplication";
+import GenerateKustomizeButton from "./buttons/GenerateKustomization";
 
 const FooterButtons = ({ formData, yaml, setYaml, environments, organizations }) => {
     return (

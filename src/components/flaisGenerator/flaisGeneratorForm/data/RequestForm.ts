@@ -1,4 +1,4 @@
-export interface FormData {
+export interface RequestForm {
     name: string;
     orgId: string
     component: string;
@@ -53,7 +53,7 @@ export interface FormData {
     };
 }
 
-export const initialFormData: FormData = {
+export const initialFormData: RequestForm = {
     name: "",
     orgId: "",
     component: "backend",

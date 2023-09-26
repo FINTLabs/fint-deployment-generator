@@ -1,5 +1,5 @@
 import React from 'react';
-import FlaisGeneratorForm from "./FlaisGeneratorForm/FlaisGeneratorForm";
+import FlaisGeneratorForm from "./flaisGeneratorForm/FlaisGeneratorForm";
 
 const FlaisGenerator = () => {
     return (

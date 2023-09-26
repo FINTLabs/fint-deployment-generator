@@ -2,9 +2,9 @@ import React from "react";
 import {Button} from "@mui/material";
 import JSZip from "jszip";
 import {saveAs} from "file-saver";
-import {baseKustomization} from "../../Data/KustomizationFiles";
-import {createKustomizeOverlay} from "../../Utils/UpdateFlaisApplication";
-import {createCDForBackend, createCI} from "../../Utils/WorkflowUtils";
+import {baseKustomization} from "../../data/KustomizationFiles";
+import {createKustomizeOverlay} from "../../utils/UpdateFlaisApplication";
+import {createCDForBackend, createCI} from "../../utils/WorkflowUtils";
 
 const GenerateKustomization = ({formData, yaml, environments, organizations}) => {
     const generateFiles = () => {

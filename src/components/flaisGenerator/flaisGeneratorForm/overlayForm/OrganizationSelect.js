@@ -3,7 +3,7 @@ import FormControl from '@mui/material/FormControl';
 import Checkbox from '@mui/material/Checkbox';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import { organizationData } from '../Data/OrganizationData';
+import { organizationData } from '../data/OrganizationData';
 
 const OrganizationSelect = ({ selectedOrgs, setSelectedOrgs }) => {
     const [orgData, setOrgData] = useState(organizationData);

@@ -1,12 +1,12 @@
 import React from 'react';
 import ToggleFieldGroup from './ToggleFieldGroup';
-import PrometheusFields from './Fields/PrometheusFields';
-import OnePasswordFields from "./Fields/OnePasswordFields";
-import DatabaseFields from "./Fields/DatabaseFields";
-import UrlFields from "./Fields/UrlFields";
-import KafkaFields from "./Fields/KafkaFields";
+import PrometheusFields from './fields/PrometheusFields';
+import OnePasswordFields from "./fields/OnePasswordFields";
+import DatabaseFields from "./fields/DatabaseFields";
+import UrlFields from "./fields/UrlFields";
+import KafkaFields from "./fields/KafkaFields";
 import {Stack} from "@mui/material";
-import IngressFields from "./Fields/IngressFields";
+import IngressFields from "./fields/IngressFields";
 
 const FeaturesForm = ({form, setForm}) => {
 

@@ -1,4 +1,4 @@
-import {cdBackend, ciBackend, ciFrontend} from "../Data/WorkflowData";
+import {cdBackend, ciBackend, ciFrontend} from "../data/WorkflowData";
 import jsYaml from "js-yaml";
 
 export function createCDForBackend(environments, organizations) {

@@ -2,7 +2,7 @@ import BasicInfoField from "./BasicInfoField";
 import ResourceField from "./ResourceField";
 import EnvironmentVariablesForm from "./EnvironmentVariablesForm";
 import SecretReferencesForm from "./SecretReferencesForm";
-import FeaturesForm from "../FeaturesForm/FeaturesForm";
+import FeaturesForm from "../featuresForm/FeaturesForm";
 import {Divider, Paper, Typography} from "@mui/material";
 
 

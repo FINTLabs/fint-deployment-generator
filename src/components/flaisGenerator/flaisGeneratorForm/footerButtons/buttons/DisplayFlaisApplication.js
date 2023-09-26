@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Dialog, DialogTitle, DialogContent, DialogActions, Button} from '@mui/material';
-import {updateFlaisApplication} from "../../Utils/UpdateFlaisApplication";
+import {updateFlaisApplication} from "../../utils/UpdateFlaisApplication";
 
 const DisplayFlaisApplication = ({ formData, yaml, setYaml}) => {
     const [open, setOpen] = useState(false);

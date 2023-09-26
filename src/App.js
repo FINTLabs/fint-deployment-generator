@@ -1,5 +1,5 @@
 import './App.css';
-import FlaisGenerator from "./components/FlaisGenerator/FlaisGenerator";
+import FlaisGenerator from "./components/flaisGenerator/FlaisGenerator";
 
 function App() {
   return (

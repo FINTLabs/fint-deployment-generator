@@ -1,6 +1,6 @@
 import jsYaml from "js-yaml";
-import {flaisYamlString} from "../Data/FlaisData.js";
-import {overlayKustomization} from "../Data/KustomizationFiles";
+import {flaisYamlString} from "../data/FlaisData.js";
+import {overlayKustomization} from "../data/KustomizationFiles";
 
 export function createKustomizeOverlay(formData, orgName) {
     const kustomizeOverlay = jsYaml.load(overlayKustomization)
