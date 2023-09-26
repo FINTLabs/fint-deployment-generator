@@ -1,5 +1,6 @@
 export interface FormData {
     name: string;
+    orgId: string
     component: string;
     partOf: string;
     team: string;
@@ -14,40 +15,39 @@ export interface FormData {
             cpu: string;
         };
     };
-    environmentVariables: {
+    env: {
         name: string,
         value: string
     }[];
-    secretReferences: {
-        name: string
+    envFrom: {
+        secretRef: {
+            name: string
+        }
     }[];
     prometheus: {
-        active: boolean;
+        enabled: boolean
         port: string;
         path: string;
     };
     onePassword: {
-        active: boolean;
-        path: string;
+        itemPath: string;
     };
     kafka: {
-        active: boolean;
+        enabled: boolean;
         acls: {
             topic: string;
             permission: string;
         }[];
     };
     database: {
-        active: boolean;
-        name: string;
+        database: string;
     };
     url: {
-        active: boolean;
         hostname: string;
         basePath: string;
     };
     ingress: {
-        active: boolean;
+        enabled: boolean;
         basePath: string;
         middlewares: string[];
     };
@@ -55,6 +55,7 @@ export interface FormData {
 
 export const initialFormData: FormData = {
     name: "",
+    orgId: "",
     component: "backend",
     partOf: "fint-core",
     team: "core",
@@ -69,36 +70,33 @@ export const initialFormData: FormData = {
             cpu: "250m"
         }
     },
-    environmentVariables: [],
-    secretReferences: [],
+    env: [],
+    envFrom: [],
     prometheus: {
-        active: true,
+        enabled: true,
         port: "8080",
         path: "/actuator/prometheus"
     },
     onePassword: {
-        active: false,
-        path: ""
+        itemPath: ""
     },
     kafka: {
-        active: false,
+        enabled: false,
         acls: [{
             topic: "",
             permission: "read"
         }]
     },
     database: {
-        active: false,
-        name: ""
+        database: ""
     },
     url: {
-        active: false,
         hostname: "",
         basePath: ""
     },
     ingress: {
-        active: false,
+        enabled: false,
         basePath: "",
         middlewares: []
     },
-}
+};
