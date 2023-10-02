@@ -5,6 +5,7 @@ import FooterButtons from "./footerButtons/FooterButtons";
 import OverlayForm from "./overlayForm/OverlayForm";
 import {flaisYamlString} from "./data/FlaisData";
 import FlaisGeneratorFields from "./fields/FlaisGeneratorFields";
+import SearchField from "./searchField/searchField";
 
 
 const FlaisGeneratorForm = () => {
@@ -15,6 +16,7 @@ const FlaisGeneratorForm = () => {
 
     return (
         <div>
+            <SearchField />
             <FlaisGeneratorFields form={form} setForm={setForm}/>
             <Divider style={{margin: "24px 0"}}/>
             <OverlayForm selectedEnvs={selectedEnvironments} setSelectedEnvs={setSelectedEnvironments}
