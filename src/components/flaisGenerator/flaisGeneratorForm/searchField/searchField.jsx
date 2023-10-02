@@ -16,10 +16,11 @@ function SearchField() {
         <div className="flex justify-center items-center m-10">
             <div className="flex gap-2.5 items-center">
                 <TextField
-                    label="Search"
+                    label="Repository Name"
                     variant="outlined"
                     value={searchTerm}
                     onChange={handleSearchChange}
+                    style={{width: "300px"}}
                 />
                 <Button variant="contained" color="primary" onClick={handleImportClick}>
                     Import
