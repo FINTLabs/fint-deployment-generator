@@ -23,9 +23,3 @@ spec:
     enabled: true
     middlewares:
       - fint-deployment-generator-sso
-  resources:
-    limits:
-      memory: "128Mi"
-      cpu: "500m"
-  restartPolicy: Always
-  replicas: 1
