@@ -1,8 +1,17 @@
 FROM node:16-alpine AS builder
 COPY . /src
 WORKDIR /src
-RUN yarn && yarn build
+RUN yarn install
+RUN yarn build
 
-FROM nginx:1.17.6
-COPY --from=builder /src/build/ /html/
-COPY nginx.conf mime.types /etc/nginx/
+FROM node:16-alpine AS runner
+WORKDIR /app
+
+COPY --from=builder /src/build ./build
+COPY --from=builder /src/node_modules ./node_modules
+COPY --from=builder /src/public ./public
+COPY --from=builder /src/package.json ./package.json
+
+EXPOSE 8000
+
+CMD ["npx", "serve", "-s", "build", "-l", "8000"]
